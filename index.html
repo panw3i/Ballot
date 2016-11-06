@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta charset="utf-8">
+		<title>抽签</title>
+
+
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<style type="text/css">
+
+	.color-swatch {
+
+	float: left;
+
+    width: 60px;
+
+    height: 60px;
+
+    margin: 0 5px;
+
+    border-radius: 3px;}
+
+    .color-swatches .brand-danger {
+
+    background-color: #d9534f;
+
+    font-size: 40px;
+
+    color: white;
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+}
+	</style>
+	</head>
+	<body>
+<div class="container-fluid">
+<div class="jumbotron text-center">
+  <h2>抽签</h2>
+</div>
+
+ <p class="text-center"></p>
+
+		 <div class="color-swatches">
+
+			<div class="color-swatch brand-danger" id="delete">始</div>
+
+		 </div>
+
+		<div class="clearfix"></div>
+
+		<div class="text-center">
+
+  		<button type="button" class="btn btn-primary btn-lg" id="btn">随机选号</button>
+
+		</div>
+
+</div>
+
+<script type="text/javascript">
+
+	var my_array = new Array(); 
+
+for (i = 1; i <= 55; i++) 
+
+		{ 
+
+		my_array[i] = i; 
+
+		} 
+
+		function getNumber(){
+
+		var arrIndex = Math.floor(Math.random()*my_array.length);
+
+		if(my_array[arrIndex]){
+
+			alert("系统已为你分配随机顺序，点击查看！")
+
+		$(".color-swatches").append('<div class="color-swatch brand-danger">'+my_array[arrIndex]+'</div>')
+	
+		my_array.splice(arrIndex,1)
+
+		}
+
+//		return my_array[arrIndex]
+
+		}
+
+
+		$("#btn").click(getNumber);
+
+		$("#delete").click(
+
+
+		function(){
+
+			last = $('.color-swatch:last').text()
+
+$('.color-swatch:last').remove();
+
+		my_array.push(last)
+
+}
+
+		)
+
+</script>
+
+	</body>
+
+</html>
+
